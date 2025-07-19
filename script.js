@@ -1,11 +1,11 @@
 // ! ------------DAY 1----------------------
 // the swith statement
 
-const day="monday";
+const day = "monday";
 
-switch(day){
+switch (day) {
   case "monday":
-    console.log("plan course structure")
+    console.log("plan course structure");
     break;
   case "tuesday":
     console.log("prepare videos");
@@ -13,10 +13,10 @@ switch(day){
   case "wednesday":
   case "thursday":
     console.log("write code");
-    break
+    break;
   case "friday":
     console.log("go to granny's house");
-    break
+    break;
   case "saturday":
     console.log("brother's house");
     break;
@@ -24,23 +24,16 @@ switch(day){
     console.log("to to church");
   default:
     console.log("not a valid day");
-    
 }
 
-
-if(day==="monday"){
+if (day === "monday") {
   console.log("its monday");
-}
-else if(day==="tuesday"){
+} else if (day === "tuesday") {
   console.log("its tuesday");
-}
-else if(day==="wednesday" || day==="thursday"){
+} else if (day === "wednesday" || day === "thursday") {
   console.log("write code");
-  
-}
-else{
+} else {
   console.log("valid date pls");
-  
 }
 
 /* 
@@ -53,77 +46,73 @@ else{
   
 */
 
-function movieTicker(age,day){
-  
+function movieTicker(age, day) {
   let isFree;
   let price;
-  if(age<5||age>60){
-    isFree=true
-    price="on the house"
-      console.log("thicket price :"+price);
+  if (age < 5 || age > 60) {
+    isFree = true;
+    price = "on the house";
+    console.log("thicket price :" + price);
 
-    return 
-  }else{
-    isFree=false
+    return;
+  } else {
+    isFree = false;
   }
 
-  switch (day){
+  switch (day) {
     case "monday":
     case "tuesday":
     case "wednesday":
     case "thursday":
     case "friday":
-      price=age<18 ? 6 : 8
+      price = age < 18 ? 6 : 8;
       // price=age<18 && 6 || age>18 && 8
-      break
+      break;
     case "sunday":
-    case "saturday":      
-      price=10;
+    case "saturday":
+      price = 10;
       break;
     default:
       console.log("invalid date");
-      return
+      return;
   }
 
-  console.log("thicket price $"+price);
-  
+  console.log("thicket price $" + price);
+
   console.log(isFree);
-  
 }
 
-movieTicker(62,"monday")  
+movieTicker(62, "monday");
 
 // ! day 2
 
-function calculator(a=0,opp="+",b=0){
-  if(isNaN(a)||isNaN(b)){
+function calculator(a = 0, opp = "+", b = 0) {
+  if (isNaN(a) || isNaN(b)) {
     console.log("enter a valid number");
-    return 
+    return;
   }
 
   let result;
-  switch (opp){
+  switch (opp) {
     case "+":
-      result=a+b;
-      break
+      result = a + b;
+      break;
     case "-":
-      result=a-b;
-      break
+      result = a - b;
+      break;
     case "*":
-      result=a*b;
-      break
+      result = a * b;
+      break;
     case "/":
-      result=Math.floor(a/b)
-      break
+      result = Math.floor(a / b);
+      break;
     default:
       console.log("enter a valid opprator");
-       
   }
   console.log(result);
-  
-} 
+}
 
-calculator()
+calculator();
 
 console.log(isNaN(1));
 
@@ -150,37 +139,32 @@ function checkPasswordStrength(password) {
 }
 
 console.log(checkPasswordStrength("abc"));
-console.log(checkPasswordStrength("abcdef")  );
-console.log(checkPasswordStrength("abc123") );
-console.log(checkPasswordStrength("abc123@!")  );
+console.log(checkPasswordStrength("abcdef"));
+console.log(checkPasswordStrength("abc123"));
+console.log(checkPasswordStrength("abc123@!"));
 
-
-function divideCheck(num){
+function divideCheck(num) {
   console.log(num);
-  
-  if(num%3===0 && num%5===0){
-    return "fizzBuzz"
+
+  if (num % 3 === 0 && num % 5 === 0) {
+    return "fizzBuzz";
+  } else if (num % 3 === 0) {
+    return "Fizz";
+  } else if (num % 5 === 0) {
+    return "Buzz";
   }
-  else if(num%3===0){
-    return "Fizz"
-  }
-  else if(num%5===0){
-    return "Buzz"
-  }
-  return num
+  return num;
 }
- 
-const fizzBuzzTwist=function(n){
-  if(n<1||n>100) return "invalid number"
-  let data
+
+const fizzBuzzTwist = function (n) {
+  if (n < 1 || n > 100) return "invalid number";
+  let data;
   // let dividebyTree=
-  for(let i=1;i<=n;i++){
-    data= divideCheck(i);
+  for (let i = 1; i <= n; i++) {
+    data = divideCheck(i);
     console.log(data);
   }
-
-}
-   
+};
 
 console.log(fizzBuzzTwist(15));
 
@@ -190,88 +174,142 @@ const students = [
   { name: "Cynthia", score: 60 },
   { name: "Daniel", score: 59 },
 ];
-function passedStudent(arr){
-  const x=arr.filter((pass,i)=>pass.score>=60).map((name,i)=>name.name)
+function passedStudent(arr) {
+  const x = arr
+    .filter((pass, i) => pass.score >= 60)
+    .map((name, i) => name.name);
   console.log(x);
-  
 }
 
+passedStudent(students);
 
-
-passedStudent(students)
-
-// day 4 
+// day 4
 
 const words = ["apple", "banana", "apple", "orange", "banana", "grape"];
 
-const findDuplicates= function(words){
+const findDuplicates = function (words) {
   console.log(words);
-  let a=[]
-  let b=[]
-  let val=""
-  for (let k of words){
-    !a.includes(k)?a.push(k):b.push(k)    
+  let a = [];
+  let b = [];
+  let val = "";
+  for (let k of words) {
+    !a.includes(k) ? a.push(k) : b.push(k);
   }
-  return b
-}
+  return b;
+};
 
-findDuplicates(words)
+findDuplicates(words);
 
 // day 5
 const nums = [3, 5, 7, 2];
 
-const sum=nums.reduce((acc,val)=>{
-  return acc+val
-},0)
+const sum = nums.reduce((acc, val) => {
+  return acc + val;
+}, 0);
 
 console.log(sum);
 
-
-const info={
-  name:"christian",
-  job:"software dev",
-  age:21,
-  hobbies:["dance","sing","code"]
-}
-info["school"]="Unilag"
-info.address="princewell"
-info
+const info = {
+  name: "christian",
+  job: "software dev",
+  age: 21,
+  hobbies: ["dance", "sing", "code"],
+};
+info["school"] = "Unilag";
+info.address = "princewell";
+info;
 console.log(info.name);
 console.log(info["name"]);
 
-
-// 
+//
 const numbers = [3, 12, 7, 5, 18, 6];
 
-function findMax(num){
- return num.reduce((acc,val)=>{
-    return val>acc?val:acc
- },num[0])
+function findMax(num) {
+  return num.reduce((acc, val) => {
+    return val > acc ? val : acc;
+  }, num[0]);
 }
 
 console.log(findMax(numbers));
-console.log(findMax([-4, -9, -1, -3]));    
+console.log(findMax([-4, -9, -1, -3]));
 
-// 
-const countWords =function(word){
-  return word.reduce((acc,val)=>{
+//
+const countWords = function (word) {
+  return word.reduce((acc, val) => {
     console.log(val);
-    acc[val]= !acc[val]? 1: acc[val]+1
-    return acc
-  },{})
-}
+    acc[val] = !acc[val] ? 1 : acc[val] + 1;
+    return acc;
+  }, {});
+};
 const wordsArr = ["apple", "banana", "apple", "orange", "banana", "apple"];
 
 console.log(countWords(wordsArr));
 
 //
 //! Next up, want to try counting how many times each letter appears in a single string?
-function countLetters(letter){
-  const letarr=[...letter]
-  return letarr.reduce((acc,val)=>{    
-    acc[val]=!acc[val]?1:acc[val]+1
-    return acc
-  },{})
-  
+function countLetters(letter) {
+  const letarr = [...letter];
+  return letarr.reduce((acc, val) => {
+    acc[val] = !acc[val] ? 1 : acc[val] + 1;
+    return acc;
+  }, {});
 }
 console.log(countLetters("hello"));
+
+//
+
+function createStudent(name, age, score) {
+  return {
+    name,
+    age,
+    score,
+    average:
+      score.reduce((acc, val) => {
+        return acc + val;
+      }, 0) / score.length,
+  };
+}
+
+console.log(createStudent("Ada", 19, [80, 90, 100]));
+
+// day 6
+
+const student = {
+  name: "Ada",
+  scores: [80, 90, 100],
+  getAverage() {
+    this.average =
+      this.scores.reduce((acc, val) => {
+        return acc + val;
+      }, 0) / this.scores.length;
+    return this.average.toFixed(1);
+  },
+};
+
+console.log(student.getAverage());
+console.log(student);
+
+// day i don't know
+const stud = [
+  { name: "Ada", scores: [80, 90, 100] },
+  { name: "Ben", scores: [60, 65, 70] },
+  { name: "Cynthia", scores: [88, 92, 95] },
+];
+
+function generateLeaderboard(stud){
+
+  return stud.reduce((acc, val, i) => {
+    const a={}
+    const ave = val.scores.reduce((ac, v) => ac + v, 0);
+    
+    a["name"] = val.name;
+    a["average"] = val.scores.reduce((ac, v) => ac + v, 0);
+    acc.push(a)
+    
+    
+    return acc;
+  }, []);
+}
+
+
+console.log(generateLeaderboard(stud));
