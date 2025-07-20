@@ -296,17 +296,15 @@ const stud = [
   { name: "Cynthia", scores: [88, 92, 95] },
 ];
 
-function generateLeaderboard(stud){
-
+function generateLeaderboard(stud) {
   return stud.reduce((acc, val, i) => {
-    const a={}
+    const a = {};
     const ave = val.scores.reduce((ac, v) => ac + v, 0);
-    
+
     a["name"] = val.name;
     a["average"] = val.scores.reduce((ac, v) => ac + v, 0);
-    acc.push(a)
-    
-    
+    acc.push(a);
+
     return acc;
   }, []);
 }
@@ -320,7 +318,7 @@ const val = stud.map((student) => {
 
 console.log(generateLeaderboard(stud));
 
-const studen= [
+const studen = [
   { name: "Ada", average: 90 },
   { name: "Ben", average: 75 },
   { name: "Chika", average: 58 },
@@ -328,65 +326,91 @@ const studen= [
   { name: "Emeka", average: 62 },
 ];
 
+const v = studen.reduce((acc, val) => {
+  acc["A"] = acc["A"] || [];
+  acc["B"] = acc["B"] || [];
+  acc["C"] = acc["C"] || [];
 
-
-const v=studen.reduce((acc,val)=>{
-  acc["A"]=acc["A"]||[]
-  acc["B"]=acc["B"]||[]
-  acc["C"]=acc["C"]||[]
-
-  if(val.average>80){
+  if (val.average > 80) {
     console.log(val.name);
-    
-    acc["A"].push(val.name)
-  }
-   if(val.average>60 &&val.average<80){
-    acc["B"].push(val.name)
-  }
-  else{
-    acc["C"].push(val.name)
-  }
-  return acc
-},{})
 
-
+    acc["A"].push(val.name);
+  }
+  if (val.average > 60 && val.average < 80) {
+    acc["B"].push(val.name);
+  } else {
+    acc["C"].push(val.name);
+  }
+  return acc;
+}, {});
 
 console.log(v);
 // algorigthm to remove duplicates
-function removeDuplicates(arr){
+function removeDuplicates(arr) {
   console.log(arr);
-  const countNum={};
-  
-  for (let i=0;i<arr.length;i++){
+  const countNum = {};
+
+  for (let i = 0; i < arr.length; i++) {
     console.log(i);
-    countNum[arr[i]]=countNum[arr[i]] ? countNum[arr[i]]+1 : 1
+    countNum[arr[i]] = countNum[arr[i]] ? countNum[arr[i]] + 1 : 1;
   }
   console.log(countNum);
-  const val=[]
-  arr.forEach(element => {
+  const val = [];
+  arr.forEach((element) => {
     console.log(val.length);
-    if( !val.includes(element)){
-      val.push(element)
+    if (!val.includes(element)) {
+      val.push(element);
     }
     console.log(element);
-  }); 
+  });
   console.log(val);
-  
-  
 }
 
-removeDuplicates([1, 2, 2, 3, 4, 4, 5]) 
-
+removeDuplicates([1, 2, 2, 3, 4, 4, 5]);
 
 // ---------------------------------------------------------------
 // ---------------------------------------------------------------
 function removeDuplicates(arr) {
   return [...new Set(arr)];
 }
-console.log(removeDuplicates(["1","2", "2", "3", "4", "4", "5"])); 
+console.log(removeDuplicates(["1", "2", "2", "3", "4", "4", "5"]));
 
 // function removeDuplicates(arr) {
 //   console.log(arr);
 //   const v=arr.filter((val,i)=>i=== arr.indexOf(val))
-//   console.log(v);  
+//   console.log(v);
 // }
+
+//! day 7
+
+function mostFrequent(arr) {
+  const count = arr.reduce((acc, val) => {
+    // loop through and count the values
+    acc[val] = !acc[val] ? 1 : acc[val] + 1;
+    return acc;
+  }, {});
+  console.log(count);
+
+  const obj = Object.entries(count);
+  let track = 0;
+  const [filteredVal] = obj.filter((val, i) => {
+    const [a, b] = val;
+    if (b > track) {
+      track = b;
+    }
+    
+    return track === b;
+  }).reverse()[0];
+  console.log("ans",filteredVal);
+  
+  return filteredVal;
+}
+
+// mostFrequent([1, 2, 2, 3, 3, 3, 4])
+// ➞ 3
+
+// mostFrequent(['a', 'b', 'a', 'a', 'c', 'b'])
+console.log(mostFrequent(['a', 'b', 'a', 'a', 'c', 'b']));
+console.log(mostFrequent([1, 2, 2, 3, 3, 3, 4]));
+
+// ➞ 'a
