@@ -311,5 +311,82 @@ function generateLeaderboard(stud){
   }, []);
 }
 
+const val = stud.map((student) => {
+  const total = student.scores.reduce((acc, score) => acc + score, 0);
+  const average = +(total / student.scores.length).toFixed(1);
+
+  return { name: student.name, average };
+});
 
 console.log(generateLeaderboard(stud));
+
+const studen= [
+  { name: "Ada", average: 90 },
+  { name: "Ben", average: 75 },
+  { name: "Chika", average: 58 },
+  { name: "Dapo", average: 81 },
+  { name: "Emeka", average: 62 },
+];
+
+
+
+const v=studen.reduce((acc,val)=>{
+  acc["A"]=acc["A"]||[]
+  acc["B"]=acc["B"]||[]
+  acc["C"]=acc["C"]||[]
+
+  if(val.average>80){
+    console.log(val.name);
+    
+    acc["A"].push(val.name)
+  }
+   if(val.average>60 &&val.average<80){
+    acc["B"].push(val.name)
+  }
+  else{
+    acc["C"].push(val.name)
+  }
+  return acc
+},{})
+
+
+
+console.log(v);
+// algorigthm to remove duplicates
+function removeDuplicates(arr){
+  console.log(arr);
+  const countNum={};
+  
+  for (let i=0;i<arr.length;i++){
+    console.log(i);
+    countNum[arr[i]]=countNum[arr[i]] ? countNum[arr[i]]+1 : 1
+  }
+  console.log(countNum);
+  const val=[]
+  arr.forEach(element => {
+    console.log(val.length);
+    if( !val.includes(element)){
+      val.push(element)
+    }
+    console.log(element);
+  }); 
+  console.log(val);
+  
+  
+}
+
+removeDuplicates([1, 2, 2, 3, 4, 4, 5]) 
+
+
+// ---------------------------------------------------------------
+// ---------------------------------------------------------------
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+console.log(removeDuplicates(["1","2", "2", "3", "4", "4", "5"])); 
+
+// function removeDuplicates(arr) {
+//   console.log(arr);
+//   const v=arr.filter((val,i)=>i=== arr.indexOf(val))
+//   console.log(v);  
+// }
