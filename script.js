@@ -418,12 +418,11 @@ console.log(mostFrequent([1, 2, 2, 3, 3, 3, 4]));
 function groupWords(val){
   const track={}
   val.forEach((v)=>{
-    
     const eachWord=v[0]
     track[eachWord]=track[eachWord]||[]
-    if(v.startsWith(eachWord)){
+    // if(v.startsWith(eachWord)){
       track[eachWord].push(v)
-    }
+    // }
   })
   console.log(track);
 }
@@ -440,6 +439,11 @@ function reverseWords(word){
     let concat=""
     for (let i=w.length;i>0;i--){
       const index=i-1;
+      // console.log(w[index].test(/[a-z]/i));
+      // console.log((/[a-z]/i).test(w[index]));
+      
+      // console.log(w[index]);
+      
       concat+=w[index]
       // index===0?rev.push(w[index]," "):rev.push(w[index])   
     }
@@ -449,3 +453,62 @@ function reverseWords(word){
   return `"${rev.join(" ")}"`;
 }
 console.log(reverseWords("hello world"));
+
+// day 10
+// !sort algorithms
+// function sordAlgo(arr){
+//   let sorted=true
+//   while(sorted){
+//     sorted=false
+//     for(let i=0;i<arr.length;i++){
+//       if(arr[i+1]>arr[i]){
+
+//         [arr[i],arr[i+1]]=[arr[i+1],arr[i]]
+        
+//         sorted=true
+//       }
+      
+//     }
+//     console.log("hello sort");
+//   }
+//   return arr
+  
+// }
+
+// const arr=[2,42,5,8,5,0,2,21]
+// console.log(sordAlgo(arr));
+
+
+
+
+//* leet code questions
+//!🔐 Authentication systems
+// Check if two fields (e.g., username + passcode) match a saved credential.
+
+// 🛒 E-commerce pricing
+// Find two items whose prices add up to a user's gift card amount.
+
+
+const twoSum = function(nums, target) {
+   
+
+  for (let i = 0; i < nums.length; i++) {
+    console.log("i------",i);
+    let val=nums[i]
+      for(let j=i+1;j< nums.length;j++){
+        // val=ilog
+        
+        const sum=val+nums[j];
+        
+        if(sum===target){
+          return [i,j]
+        }
+        
+      }
+      
+    }
+    
+};
+
+console.log(twoSum([2,11,7,15],9));
+// console.log(twoSum([3,2,4],6));
