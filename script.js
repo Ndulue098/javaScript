@@ -382,14 +382,13 @@ console.log(removeDuplicates(["1", "2", "2", "3", "4", "4", "5"]));
 // }
 
 //! day 7
-
+// note u can loop throuh an obj with the for in loop 
 function mostFrequent(arr) {
   const count = arr.reduce((acc, val) => {
     // loop through and count the values
     acc[val] = !acc[val] ? 1 : acc[val] + 1;
     return acc;
   }, {});
-  console.log(count);
 
   const obj = Object.entries(count);
   let track = 0;
@@ -414,3 +413,39 @@ console.log(mostFrequent(['a', 'b', 'a', 'a', 'c', 'b']));
 console.log(mostFrequent([1, 2, 2, 3, 3, 3, 4]));
 
 // ➞ 'a
+
+// day 8
+function groupWords(val){
+  const track={}
+  val.forEach((v)=>{
+    
+    const eachWord=v[0]
+    track[eachWord]=track[eachWord]||[]
+    if(v.startsWith(eachWord)){
+      track[eachWord].push(v)
+    }
+  })
+  console.log(track);
+}
+
+groupWords(["apple", "banana", "avocado", "blueberry", "cherry"]);
+
+// day 9
+// ! my version 
+// i should have concatinated tack word
+function reverseWords(word){
+  const splitWord=word.split(" ");
+  const rev=[]
+  for(let w of splitWord){
+    let concat=""
+    for (let i=w.length;i>0;i--){
+      const index=i-1;
+      concat+=w[index]
+      // index===0?rev.push(w[index]," "):rev.push(w[index])   
+    }
+    rev.push(concat)
+    
+  }
+  return `"${rev.join(" ")}"`;
+}
+console.log(reverseWords("hello world"));
