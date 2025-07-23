@@ -492,23 +492,52 @@ console.log(reverseWords("hello world"));
 const twoSum = function(nums, target) {
    
 
+  // for (let i = 0; i < nums.length; i++) {
+  //   console.log("i------",i);
+  //   let val=nums[i]
+  //     for(let j=i+1;j< nums.length;j++){
+  //       // val=ilog
+  //       const sum=val+nums[j];
+  //       if(sum===target){
+  //         return [i,j]
+  //       }
+  //     }
+  //   }
+
+ const seen = {};
+
   for (let i = 0; i < nums.length; i++) {
-    console.log("i------",i);
-    let val=nums[i]
-      for(let j=i+1;j< nums.length;j++){
-        // val=ilog
-        
-        const sum=val+nums[j];
-        
-        if(sum===target){
-          return [i,j]
-        }
-        
-      }
-      
-    }
+    const complement = target - nums[i];
+    console.log(target - nums[i]);
     
+    if (seen.hasOwnProperty(complement)) {
+      console.log("complement",seen[complement]);
+      
+      // return [seen[complement], i];
+    }
+
+    seen[nums[i]] = i;
+    console.log(seen);
+    
+  }
+  
 };
 
 console.log(twoSum([2,11,7,15],9));
 // console.log(twoSum([3,2,4],6));
+
+// day 11 
+const isPalindrome = function(x){
+  // for(let i)
+  const a=[]
+  const xString=[...`${x}`]
+  console.log(`${x}`.reverse());
+  
+  for(let i=xString.length-1;i>=0;i--){
+    a.push(xString[i])
+  }
+  const reversedNum=+a.join("")
+  return reversedNum===x
+};
+
+console.log(isPalindrome(121));
