@@ -531,13 +531,130 @@ const isPalindrome = function(x){
   // for(let i)
   const a=[]
   const xString=[...`${x}`]
-  console.log(`${x}`.reverse());
-  
-  for(let i=xString.length-1;i>=0;i--){
-    a.push(xString[i])
+  let b=x
+  // math version
+  let reversed = 0;
+  while (b > 0) {
+    reversed = reversed * 10 + b % 10;
+    b = Math.floor(b / 10);
+    console.log("x compitation",Math.floor(12 / 10));
+    
   }
-  const reversedNum=+a.join("")
-  return reversedNum===x
-};
+  console.log("x vAL",);
+  
+  // console.log(x === reversed || x === Math.floor(reversed / 10));
+  console.log(x===reversed);
+  
+  
+  console.log("reversed",reversed);
+  console.log("divide",12/10);
+  
 
+
+  return +xString.reverse().join("")===x
+};
+  
 console.log(isPalindrome(121));
+
+// day 12
+/* 
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+*/
+const romansVal={
+  "I":1,
+  "V":5,
+  "X":10,
+  "L":50,
+  "C":100,
+  "D":500,
+  "M":1000,
+}
+
+/*
+iv 
+ix
+
+xl
+xc
+
+cd 
+cm
+*/
+const romanToInt = function(s) {
+    let concat=0;
+    let special=0
+    for(let i=0;i<s.length;i++){
+      const roman=s[i]
+      concat+=romansVal[roman]      
+      if(i && roman!=="I"){
+        const prev=i-1
+        const prevNumeral=s[prev]
+        if(prevNumeral==="I"  && (roman === "V" || roman === "X")){
+          // concat-=1
+          special+=-2
+        }
+        if(prevNumeral==="X" && (roman === "L" || roman === "C")){
+          // concat-=10
+          special+=-20
+          console.log("sum --X",concat);
+        }
+        if(prevNumeral==="C"&& (roman === "D" || roman === "M")){
+          // concat-=100
+          special+=-200
+          console.log("sum --C",concat);
+        }
+      }
+    }
+    return (concat+special)
+    
+};
+romanToInt("MCMXCIV");
+console.log(romanToInt("DCXXI"));
+
+/* 
+Example 1:
+
+Input: s = "III"
+Output: 3
+Explanation: III = 3.
+Example 2:
+
+Input: s = "LVIII"
+Output: 58
+Explanation: L = 50, V= 5, III = 3.
+
+Input: s = "MCMXCIV"
+Output: 1994
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+*/
+
+//! next question
+console.log("---------------------------------------------------");
+console.log("---------------------------------------------------");
+
+const maximumGain = function(s, x, y) {
+    const concat="";
+    const obj={}
+    for(let i=0;i<s.length;i++){
+      const letter=s[i]
+      if(concat.length<2){
+        concat+=letter
+      }
+        
+    }
+};
+/* 
+a:6
+b:6
+1a+1b=5
+1a+1b=5
+1a+1b=5
+1a+1b=5
+*/
+maximumGain("aabbaaxybbaabb",4,5);
