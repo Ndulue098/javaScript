@@ -576,16 +576,6 @@ const romansVal={
   "M":1000,
 }
 
-/*
-iv 
-ix
-
-xl
-xc
-
-cd 
-cm
-*/
 const romanToInt = function(s) {
     let concat=0;
     let special=0
@@ -634,27 +624,28 @@ Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 */
 
-//! next question
+//Day 14
 console.log("---------------------------------------------------");
 console.log("---------------------------------------------------");
 
-const maximumGain = function(s, x, y) {
-    const concat="";
-    const obj={}
-    for(let i=0;i<s.length;i++){
-      const letter=s[i]
-      if(concat.length<2){
-        concat+=letter
-      }
-        
+const maxSum = function(nums) {
+   const seen = new Set();
+  let sum = 0;
+
+  for (let num of nums) {
+    const abs = Math.abs(num);
+    if (!seen.has(abs)) {
+      seen.add(abs);
+      sum += num; // keep the sign of first occurrence
     }
+  }
+
+  return sum;
 };
-/* 
-a:6
-b:6
-1a+1b=5
-1a+1b=5
-1a+1b=5
-1a+1b=5
-*/
-maximumGain("aabbaaxybbaabb",4,5);
+
+// maxSum([1,2,-1,-2,1,0,-1])
+console.log(maxSum([-20,20])); 
+console.log(maxSum([-100]));
+console.log(maxSum([-17,-15]));
+
+
